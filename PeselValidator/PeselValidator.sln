@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeselValidator", "PeselValidator\PeselValidator.csproj", "{E58D6224-DEA3-4E74-9F7D-FCB9F6082547}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PeselValidator", "PeselValidator\PeselValidator.csproj", "{E58D6224-DEA3-4E74-9F7D-FCB9F6082547}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeselValidator.Tools", "PeselValidator.Tools\PeselValidator.Tools.csproj", "{BCB4221C-0056-4B87-993B-F73F36200037}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeselValidator.Tests", "PeselValidator.Tests\PeselValidator.Tests.csproj", "{C6242892-0600-49B0-B5D5-6B375B8C5B4D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{E58D6224-DEA3-4E74-9F7D-FCB9F6082547}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E58D6224-DEA3-4E74-9F7D-FCB9F6082547}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E58D6224-DEA3-4E74-9F7D-FCB9F6082547}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCB4221C-0056-4B87-993B-F73F36200037}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCB4221C-0056-4B87-993B-F73F36200037}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCB4221C-0056-4B87-993B-F73F36200037}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCB4221C-0056-4B87-993B-F73F36200037}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6242892-0600-49B0-B5D5-6B375B8C5B4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6242892-0600-49B0-B5D5-6B375B8C5B4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6242892-0600-49B0-B5D5-6B375B8C5B4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6242892-0600-49B0-B5D5-6B375B8C5B4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
