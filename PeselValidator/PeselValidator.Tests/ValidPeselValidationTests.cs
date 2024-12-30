@@ -3,19 +3,10 @@ using PeselValidator.Tools;
 
 namespace PeselValidator.Tests;
 
+[TestFixture]
 public class ValidPeselValidationTests
 {
     private TestPeselNumbers config;
-
-    //[OneTimeSetUp]
-    //public void RunBeforeAllTheTests()
-    //{
-    //    var aConfig = new ConfigurationBuilder()
-    //        .AddJsonFile("testsettings.json")
-    //        .Build();
-
-    //    config = TestPeselNumbers.Create(aConfig);
-    //}
 
     [SetUp]
     public void Setup()

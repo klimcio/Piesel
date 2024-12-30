@@ -1,4 +1,6 @@
-﻿namespace PeselValidator.Tools;
+﻿using System.Text.RegularExpressions;
+
+namespace PeselValidator.Tools;
 
 public class PeselResult
 {
@@ -15,25 +17,31 @@ public class PeselResult
     {
         try
         {
-
+            if (!Contains11Digits(pesel))
+                return new PeselResult(null, ResultType.NotAStringOf11Digits);
 
             var peselArray = pesel
                 .Select(x => int.Parse(x.ToString()))
                 .ToArray();
 
-            if (ValidateCheckSum(peselArray.ToArray())) 
+            if (ValidateCheckSum(peselArray.ToArray()))
                 return new PeselResult(PeselNumber.Create(peselArray), ResultType.OK);
-            else 
+            else
                 return new PeselResult(null, ResultType.InvalidChecksum);
-        }
-        catch (PeselException e)
-        {
-            return new PeselResult(null, e.ResultType);
         }
         catch (Exception)
         {
             return new PeselResult(null, ResultType.UnknownError);
         }
+    }
+
+    private static bool Contains11Digits(string pesel)
+    {
+        string elevenDigitsPattern = @"^\d{11}$";
+
+        Regex regex = new Regex(elevenDigitsPattern);
+
+        return regex.IsMatch(pesel);
     }
 
     private static bool ValidateCheckSum(int[] numbers)
