@@ -1,18 +1,14 @@
 ﻿namespace PeselValidator.Tools;
 
-internal class PeselNumber
+public class PeselNumber
 {
-    private PeselNumber(string number)
+    public PeselNumber(int[] numbers)
     {
-        Number = number;
+        Numbers = numbers;
     }
 
-    public string Number { get; }
+    public int[] Numbers { get; }
 
-    public static PeselNumber Create(string number)
-    {
-
-
-        return new PeselNumber(number);
-    }
+    internal static PeselNumber Create(int[] numbers) 
+        => new(numbers);
 }
