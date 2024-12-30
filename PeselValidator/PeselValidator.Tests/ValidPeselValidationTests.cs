@@ -33,5 +33,6 @@ public class ValidPeselValidationTests
         var pesel = PeselResult.CreatePeselObject(config.ValidPesel);
 
         pesel.Result.Should().Be(ResultType.OK);
+        pesel.Pesel.Should().NotBeNull();
     }
 }
