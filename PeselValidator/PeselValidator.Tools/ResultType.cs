@@ -8,3 +8,9 @@ public enum ResultType
     InvalidDate = 4,
     UnknownError = 5
 }
+
+public enum Sex
+{
+    Male,
+    Female
+}
