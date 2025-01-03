@@ -54,10 +54,22 @@ internal class Program
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"{invalidPesels.ToString()} invalid pesels for {peselDate}");
             Console.ResetColor();
+
+            // Save valid PESELs to a file
+            SaveValidPeselsToFile(validPesels, "valid_pesels.txt");
         }
         catch (Exception ex)
         {
             Console.WriteLine(ex.ToString());
+        }
+    }
+
+    static void SaveValidPeselsToFile(List<PeselNumber> validPesels, string filePath)
+    {
+        using StreamWriter file = new(filePath);
+        foreach (var pesel in validPesels)
+        {
+            file.WriteLine(pesel.Number);
         }
     }
 }
