@@ -24,6 +24,9 @@ public class PeselResult
                 .Select(x => int.Parse(x.ToString()))
                 .ToArray();
 
+            // Validate Pesel Date
+
+
             if (ValidateCheckSum(peselArray.ToArray()))
                 return new PeselResult(PeselNumber.Create(peselArray), ResultType.OK);
             else

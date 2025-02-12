@@ -8,6 +8,8 @@ internal class Program
     {
         try
         {
+            var sex = GetSex();
+
             Console.Write("Please provide a PESEL: ");
             var enteredPesel = Console.ReadLine();
 
@@ -31,33 +33,55 @@ internal class Program
                 if (peselObj.Result == ResultType.OK)
                 {
                     validPesels.Add(peselObj.Pesel!);
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine(peselWannabe);
-                    Console.ResetColor();
+                    WriteLineGreen(peselWannabe);
                 }
                 else
                 {
                     invalidPesels++;
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine(peselWannabe);
-                    Console.ResetColor();
+                    WriteLineRed(peselWannabe);
                 }
             }
 
             var howManyMales = validPesels.Where(x => x.Sex == Sex.Male).Count();
-            var howManyFemales = validPesels.Where(x => x.Sex == Sex.Female).Count(); 
+            var howManyFemales = validPesels.Where(x => x.Sex == Sex.Female).Count();
 
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"{validPesels.Count().ToString()} valid pesels for {peselDate}");
-            Console.WriteLine($"{howManyMales.ToString()} males and {howManyFemales.ToString()} females for {peselDate}");
-            Console.ResetColor();
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"{invalidPesels.ToString()} invalid pesels for {peselDate}");
-            Console.ResetColor();
+            WriteLineGreen($"{validPesels.Count().ToString()} valid pesels for {peselDate}");
+            WriteLineGreen($"{howManyMales.ToString()} males and {howManyFemales.ToString()} females for {peselDate}");
+            WriteLineRed($"{invalidPesels.ToString()} invalid pesels for {peselDate}");
         }
         catch (Exception ex)
         {
             Console.WriteLine(ex.ToString());
         }
+    }
+
+    static Sex? GetSex()
+    {
+        Console.Write("Choose sex (0 - female, 1 - male, anything else - both: ");
+        var enteredSex = Console.ReadLine();
+
+        switch (enteredSex)
+        {
+            case "0":
+                return Sex.Female;
+            case "1":
+                return Sex.Male;
+            default:
+                return null;
+        }
+    }
+
+    static void WriteLineGreen(string message)
+    {
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine(message);
+        Console.ResetColor();
+    }
+
+    static void WriteLineRed(string message)
+    {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine(message);
+        Console.ResetColor();
     }
 }
