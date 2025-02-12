@@ -45,9 +45,16 @@ internal class Program
             var howManyMales = validPesels.Where(x => x.Sex == Sex.Male).Count();
             var howManyFemales = validPesels.Where(x => x.Sex == Sex.Female).Count();
 
-            WriteLineGreen($"{validPesels.Count().ToString()} valid pesels for {peselDate}");
-            WriteLineGreen($"{howManyMales.ToString()} males and {howManyFemales.ToString()} females for {peselDate}");
-            WriteLineRed($"{invalidPesels.ToString()} invalid pesels for {peselDate}");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"{validPesels.Count().ToString()} valid pesels for {peselDate}");
+            Console.WriteLine($"{howManyMales.ToString()} males and {howManyFemales.ToString()} females for {peselDate}");
+            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"{invalidPesels.ToString()} invalid pesels for {peselDate}");
+            Console.ResetColor();
+
+            // Save valid PESELs to a file
+            SaveValidPeselsToFile(validPesels, "valid_pesels.txt");
         }
         catch (Exception ex)
         {
@@ -83,5 +90,14 @@ internal class Program
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine(message);
         Console.ResetColor();
+    }
+
+    static void SaveValidPeselsToFile(List<PeselNumber> validPesels, string filePath)
+    {
+        using StreamWriter file = new(filePath);
+        foreach (var pesel in validPesels)
+        {
+            file.WriteLine(pesel.Number);
+        }
     }
 }
